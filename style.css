@@ -1,0 +1,994 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Card styles */
+        .card {
+            background: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #000000;
+        }
+
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            border-color: #000;
+            transform: translateY(-1px);
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 2px;
+            background: #000;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 1px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 1rem 2rem;
+        }
+
+        /* Bento Grid Layout */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: auto;
+            gap: 1.5rem;
+            min-height: calc(100vh - 500px);
+        }
+
+        /* Grid Items */
+        .bento-item {
+            padding: 2rem;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+        }
+
+        .bento-item.animate-in {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .bento-item:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            grid-column: span 8;
+            grid-row: span 2;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 1.5rem;
+            border: 2px solid #000;
+            background: url("assets/image.png") no-repeat center center;
+            background-size: contain;
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #000;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero-section p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid #000;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #000;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Quick Stats */
+        .stats-section {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            height: calc(100% - 60px);
+            margin-top: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            border-radius: 12px;
+            border: 1px solid #000;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #000;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about-section {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+
+        /* Featured Project */
+        .featured-project {
+            grid-column: span 6;
+            grid-row: span 2;
+        }
+
+        .project-preview {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            border: 1px solid #000;
+            background: #fff;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-preview:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            background: #fff;
+            color: #000;
+            font-size: 0.85rem;
+            border: 1px solid #000;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: #000;
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-links a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            border: 1px solid #000;
+            transition: all 0.3s ease;
+            background: #fff;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .project-links a:hover {
+            background: #000;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Projects Grid */
+        .projects-grid-section {
+            grid-column: span 6;
+            grid-row: span 2;
+        }
+
+        .projects-mini-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            height: calc(100% - 60px);
+            margin-top: 1rem;
+        }
+
+        .project-mini-card {
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #000;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .project-mini-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Skills */
+        .skills-section {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            background: #fff;
+            color: #000;
+            font-size: 0.9rem;
+            border: 1px solid #000;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #000;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Certifications */
+        .certifications-section {
+            grid-column: span 8;
+            grid-row: span 1;
+        }
+
+        .certifications-scroll {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scroll-behavior: smooth;
+        }
+
+        .certifications-scroll::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .certifications-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 2px;
+        }
+
+        .certifications-scroll::-webkit-scrollbar-thumb {
+            background: #000;
+            border-radius: 2px;
+        }
+
+        .cert-card {
+            min-width: 200px;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 12px;
+            border: 1px solid #000;
+            background: #fff;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .cert-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cert-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 1rem;
+            border-radius: 12px;
+            border: 2px solid #000;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover .cert-icon {
+            background: #000;
+            color: #fff;
+        }
+
+        /* Links Section */
+        .links-section {
+            grid-column: span 12;
+            grid-row: span 1;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .link-card {
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 12px;
+            border: 1px solid #000;
+            background: #fff;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .link-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .link-icon {
+             flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 0.8rem;
+            border-radius: 12px;
+            border: 2px solid #000;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .link-card:hover .link-icon {
+            background: #000;
+            color: #fff;
+        }
+
+        /* Section Titles */
+        .section-title-small {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #000;
+            font-weight: 700;
+        }
+
+        /* Text styles */
+        h3 {
+            color: #000;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        h4 {
+            color: #000;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Touch devices optimization */
+        @media (hover: none) and (pointer: coarse) {
+            .bento-item:hover,
+            .card:hover,
+            .stat-item:hover,
+            .project-mini-card:hover,
+            .cert-card:hover,
+            .link-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+            
+            .bento-item:active,
+            .card:active {
+                transform: scale(0.98);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(8, 1fr);
+                gap: 1.2rem;
+            }
+
+            .hero-section {
+                grid-column: span 8;
+            }
+
+            .stats-section,
+            .about-section,
+            .skills-section {
+                grid-column: span 4;
+            }
+
+            .featured-project,
+            .projects-grid-section {
+                grid-column: span 8;
+            }
+
+            .certifications-section {
+                grid-column: span 8;
+            }
+
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+
+            .container {
+                padding: 100px 1rem 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #fff;
+                flex-direction: column;
+                padding: 1.5rem;
+                border-radius: 0 0 12px 12px;
+                border: 1px solid #000;
+                border-top: none;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                margin: 0 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem 1.5rem;
+                margin: 0.2rem 0;
+                text-align: center;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .bento-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+            }
+
+            .hero-section,
+            .stats-section,
+            .about-section,
+            .skills-section,
+            .featured-project,
+            .projects-grid-section,
+            .certifications-section,
+            .links-section {
+                grid-column: span 4;
+            }
+                .stats-section,
+                .about-section,
+                .skills-section {
+                    grid-column: span 4;
+                }
+
+                .featured-project {
+                    grid-column: span 4;
+                }
+
+                .projects-grid-section {
+                    grid-column: span 4;
+                }
+
+                .certifications-section {
+                    grid-column: span 4;
+                }
+
+                .links-section {
+                    grid-column: span 4;
+                }
+            }
+            .hero-section h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+
+            .hero-section p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .profile-img {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .container {
+                padding: 100px 0.8rem 1rem;
+            }
+
+            .bento-item {
+                padding: 1.5rem;
+            }
+
+            .project-preview {
+                height: 150px;
+                font-size: 3rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+                height: auto;
+            }
+
+            .stat-item {
+                padding: 1rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .projects-mini-grid {
+                gap: 0.8rem;
+                height: auto;
+            }
+
+            .project-mini-card {
+                padding: 1.2rem;
+            }
+
+            .tech-stack {
+                gap: 0.4rem;
+                margin-bottom: 1rem;
+            }
+
+            .tech-tag {
+                padding: 0.3rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .skill-tag {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .cert-card {
+                min-width: 160px;
+                padding: 1.2rem;
+            }
+
+            .cert-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .cert-card h4 {
+                font-size: 0.9rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .cert-card p {
+                font-size: 0.75rem;
+            }
+            .links-section {
+                display: flex;
+                grid-template-columns: repeat(1, 1fr);
+                gap: 1rem;
+            }
+            .link-card {
+                flex-direction: column;
+            }
+            .links-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.8rem;
+            }
+
+            .link-card {
+                padding: 1.2rem 1rem;
+            }
+
+            .link-icon {
+                width: 5px;
+                height: 5px;
+                font-size: 1.1rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .link-card h4 {
+                font-size: 0.9rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .link-card p {
+                font-size: 0.75rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+                min-width: 140px;
+            }
+
+            .cta-buttons {
+                gap: 0.8rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section-title-small {
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
+            }
+        
+
+        @media (max-width: 480px) {
+            .nav {
+                padding: 0 0.8rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .container {
+                padding: 90px 0.6rem 1rem;
+            }
+
+            .bento-grid {
+                .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+            }
+
+            .bento-item {
+                padding: 1.2rem;
+            }
+
+            .hero-section h1 {
+                font-size: 1.8rem;
+                line-height: 1.2;
+                margin-bottom: 0.8rem;
+            }
+
+            .hero-section p {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            .profile-img {
+                width: 90px;
+                height: 90px;
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 0.6rem;
+            }
+
+            .stat-item {
+                padding: 1rem 0.8rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-label {
+                font-size: 0.85rem;
+            }
+
+            .project-preview {
+                height: 120px;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .tech-stack {
+                margin-bottom: 1rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+
+            .project-links a {
+                text-align: center;
+                padding: 0.8rem 1rem;
+                width: 100%;
+            }
+
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .link-card {
+                padding: 1rem 0.8rem;
+            }
+
+            .link-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+
+            .link-card h4 {
+                font-size: 0.85rem;
+            }
+
+            .link-card p {
+                font-size: 0.7rem;
+                line-height: 1.3;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 1rem;
+                font-size: 1rem;
+                margin: 0;
+            }
+
+            .certifications-scroll {
+                padding: 0.8rem 0;
+            }
+
+            .cert-card {
+                min-width: 140px;
+                padding: 1rem 0.8rem;
+            }
+
+            .skills-list {
+                gap: 0.5rem;
+            }
+
+            .skill-tag {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .section-title-small {
+                font-size: 1.1rem;
+                margin-bottom: 0.6rem;
+            }
+
+            /* Better touch targets */
+            .nav-links a,
+            .btn,
+            .link-card,
+            .project-links a {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .mobile-menu {
+                min-width: 44px;
+                min-height: 44px;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .container {
+                padding: 90px 0.4rem 1rem;
+            }
+
+            .hero-section h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-section p {
+                font-size: 0.9rem;
+            }
+
+            .bento-item {
+                padding: 1rem;
+            }
+
+            .project-preview {
+                height: 100px;
+                font-size: 2rem;
+            }
+
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-card {
+                min-width: 120px;
+                padding: 0.8rem;
+            }
+
+            .section-title-small {
+                font-size: 1rem;
+            }
+
+            .nav {
+                padding: 0 0.5rem;
+            }
+
+            .nav-links {
+                margin: 0 0.5rem;
+            }
+        }
+    
